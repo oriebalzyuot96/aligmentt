@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.css" />
+    <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css" />
+    <script type="text/javascript" src="https://openlayers.org/en/latest/build/ol.js"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL,Object.assign"></script>
+    <link rel="stylesheet" href="./libs/v6.4.3-dist/ol-ext.css" />
+    <link rel="stylesheet" href="./../dist/ol-ext.css" />
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./libs/v6.4.3-dist/ol.css">
+    <title>Document</title>
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="h1">Geo-Referencing sample</h1>
+</header>
+<main class="main">
+  <div id="test"></div>
+    <div>
+      <div class="fileContainer">
+            <div id = 'out-map' class="map">
+            <div id="map" class="map"></div>
+            </div>
+
+            <div class="grid-1 , layersSwetchers">
+              <div class="sidebar">
+                  <h2>Base Layers</h2>
+                  <input type="radio" class="radio" name="radio" value="openStreetMapStandard"checked>Open Street Map Standard<br>
+                  <input type="radio" class="radio" name="radio" value="openStreetMapHumanitarian" >Open Street Map Humanitarian<br>
+                  <input type="radio" class="radio" name="radio" value="stamenTerrain" >Stamen Terrain<br>
+                  <input type="radio" class="radio" name="radio" value="sateliteTerrain" >Satelite Layer<br>
+                  <input type="radio" class="radio" name="radio" value="bingSateliteTerrain" >Bing Satelite Layer<br>
+              </div>
+              <br>
+          </div>
+      </div>
+            <!-- Select floor -->
+            <!-- <form class="form-inline">
+              <label>Action type &nbsp;</label>
+                <select id="type" class="form-control">
+                  <option value="none" >None</option>
+                  <option value="floor1"selected>Floorw 1</option>
+                  <option value="floor2">Floorw 2</option>
+                </select>
+              <span id="status">&nbsp;0 selected features</span>
+            </form> -->
+            <!-- Draw options -->
+            <form class="form-Input-file">
+              <h2>Input file:</h2>
+              <div class="fileContainer">
+              <div>
+              <label for="LongLat1">LongLat1 "Red":</label>
+              <input type="file" id="LongLat1" name="red">
+              <label for="LongLat2">LongLat2 "Green":</label>
+              <input type="file" id="LongLat1" name="green">                
+              </div>
+              <div>
+              <label for="pexel1">pexel1 "Blue":</label>
+              <input type="file" id="pexel1"   name="blue">
+              <label for="pexel2">pexel2 "Orange":</label>
+              <input type="file" id="pexel2"   name="orange">                
+              </div>
+              </div>
+
+            </form>
+            <!-- <form class="form-inline" style="display: none;">
+              <h2>Draw:</h2>
+              <label>Geometry type &nbsp;</label>
+              <select id="type">
+                <option value="None">None</option>
+                <option value="Point">Point</option>
+                <option value="MultiPoint">MultiPoint</option>
+                <option value="LineString">LineString</option>
+                <option value="MultiLineString">MultiLineString</option>
+                <option value="LinearRing">LinearRing</option>
+                <option value="Polygon">Polygon</option>
+                <option value="MultiPolygon">MultiPolygon</option>
+                <option value="Rectangular">Rectangular</option>
+                <option value="Circle">Circle</option>
+                <option value="GeometryCollection">GeometryCollection</option>
+              </select>
+            </form> -->
+
+                            <!-- options for georeferancing -->
+                            <div class="options">
+                              <h2>Options:</h2>
+                              <label>Action type &nbsp;</label>
+                              <select id="floor" class="form-control">
+                                <option value="none" >None</option>
+                                <option value="floor1"selected>Floorw 1</option>
+                                <option value="floor2">Floorw 2</option>
+                              </select>
+                              <div class="hidden">
+                                <span id="status">&nbsp;0 selected features</span>
+                                  Rotation: <input id="rotate" class="option" type="number" value="91.67567110734407" step="0.1" />
+                                  <br />
+                                  Center floor 1: 
+                                  <input id ="x1" class="option" type="number" value="35.866095274609506" step=".1" />
+                                  <input id ="y1" class="option" type="number" value="31.97610993111981" step=".10" />
+                                  <br />
+                                  Center floor 2: 
+                                  <input id ="x2" class="option" type="number" value="35.866095274609506" step=".1" />
+                                  <input id ="y2" class="option" type="number" value="31.97610993111981" step=".10" />
+                                  <br />
+                                  Scale floor 1:
+                                  <input id ="w1" class="option" type="number" step="0.0000001" value ="1.8655787401467947e-7" />
+                                  <input id ="h1" class="option" type="number" step="0.0000001" value ="1.5785942685522552e-7" />
+                                  <br />
+                                  Scale floor 2:
+                                  <input id ="w2" class="option" type="number" step="0.0000001" value ="1.8655787401467947e-7" />
+                                  <input id ="h2" class="option" type="number" step="0.0000001" value ="1.5785942685522552e-7" />
+                                  <br />
+                                  Crop:
+                                  <input id ="xmin" class="option" type="number" value="0" step="10" />
+                                  <input id ="ymin" class="option" type="number" value ="0" step="10" />
+                                  <input id ="xmax" class="option" type="number" value="5766" step="10" />
+                                  <input id ="ymax" class="option" type="number" value ="5580" step="10" />
+                              </div>
+                            </div>
+
+            <!-- Search in out -->
+            <span id="outnav-result"></span>
+            <form class="form-inline">
+              <h2>Search projection:</h2>
+              <input type="text" id="epsg-query" placeholder="4326, 27700, 3031, US National Atlas, Swiss, France, ..." class="form-control" size="50" />
+              <button id="epsg-search" class="btn">Search</button>
+              <span id="epsg-result"></span>
+
+            </form>
+            <!-- to make grid layer -->
+              <div style="display: none;" id = 'all-checkbox'>
+                  <h2>Render reprojection edges & Show graticule</h2>
+                  <label for="render-edges">
+                    Render reprojection edges
+                    <input type="checkbox" id="render-edges">
+                  </label>
+                  <label for="show-graticule">
+                    &nbsp;&nbsp;&nbsp;Show graticule
+                    <input type="checkbox" id="show-graticule" />
+                  </label>
+              </div>
+            </div>
+    </div>
+</main>
+     <footer></footer>
+    
+
+
+
+     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+     <script src="jquery-csv.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/4.1.0/superagent.min.js" integrity="sha512-LJaxxgpiq7SihGQ21nejROsll6FRrgbs0Wxtgqb5x+Q0CJICA3vt8hlBxSD8NLsO+Yabgg3B7ARexiijKiojGg==" crossorigin="anonymous"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.6.2/proj4.min.js"></script>
+     <script type="text/javascript" src="./libs/v6.4.3-dist/ol-ext.js"></script>
+     <script type="text/javascript" src="../../dist/ol-ext.js"></script>
+     <script src="https://unpkg.com/elm-pep"></script>
+ 
+     <script src="./main.js"></script> 
+</body>
+</html>

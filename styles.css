@@ -1,0 +1,235 @@
+@media (min-width: 768px) {  
+
+  *{
+    box-sizing: border-box;
+    /* width: 100%; */
+  }
+  
+  .main{
+  font-size: 2.3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  }
+  
+  .header{
+    background-color: cornflowerblue;
+  }
+  
+  .map {
+      height: 70vh;
+      width: 100%;
+      margin-top: 30px;
+      border: 2px;
+      border-color: aqua;
+      border-radius: 5px 5px 5px 5px;
+  }
+  
+  .h1{
+    color: rgb(204, 204, 204);
+    text-align: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+  }
+  
+  .div-50{
+    width: 50%;
+  }
+  
+  input{
+    width: 100%;
+  }
+  
+  /* .grid-container{
+      display:grid;
+      grid-template-columns: 20vw 80vw;
+      grid-template-rows: 100vh;
+  } */
+  
+  /* .side/bar{
+      margin-left: 15px;
+      width: 517px;
+  } */
+  
+  /* .options{
+    display:none;
+  } */
+  
+  /* .hidden{
+    display:none;
+  } */
+  
+  .options input[type="number"] {
+      width:7em;
+  }
+  
+  .options input[type="range"] {
+      vertical-align: middle;
+  }
+  
+  .options input[type="number"] {
+    width:7em;
+  }
+  
+  .options input[type="range"] {
+    vertical-align: middle;
+  }
+  
+  .options input[type="number"] {
+    margin-bottom: 1%;
+  }
+  
+  .ol-zoom {
+      top: 0.5em;
+      left: 0.5em;
+      width: 31px;
+  }  
+  
+  .ol-control.ol-layerswitcher {
+    width: 2em;
+  }
+  
+  /* canvas {
+    transform: inherit !important;
+  } */
+  
+  .form-go {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .btn1{
+    width: 45%;
+    margin-top: 12%;
+  }
+  
+  .btn{
+    width: 100%;
+    /* margin-top: 12%; */
+  }
+  }
+  
+  
+  @media (max-width: 768px) {  
+  
+    *{
+      box-sizing: border-box;
+      /* width: 100%; */
+    }
+    
+    .main{
+    font-size: 2.1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 95%;
+    }
+    
+    .header{
+      background-color: cornflowerblue;
+    }
+    
+    .map {
+        height: 65vh;
+        width: 100%;
+        margin-top: 30px;
+        border: 2px;
+        border-color: aqua;
+        border-radius: 5px 5px 5px 5px;
+    }
+    
+    .h1{
+      color: rgb(204, 204, 204);
+      text-align: center;
+      padding-top: 1%;
+      padding-bottom: 1%;
+    }
+    
+    .div-50{
+      width: 50%;
+    }
+    
+    input{
+      width: 100%;
+    }
+    
+    /* .grid-container{
+        display:grid;
+        grid-template-columns: 20vw 80vw;
+        grid-template-rows: 100vh;
+    } */
+    
+    /* .side/bar{
+        margin-left: 15px;
+        width: 517px;
+    } */
+      
+    .options input[type="number"] {
+        width:5em;
+    }
+    
+    .options input[type="range"] {
+        vertical-align: middle;
+    }
+    
+    .options input[type="number"] {
+      width:5em;
+    }
+    
+    .options input[type="range"] {
+      vertical-align: middle;
+    }
+    
+    .options input[type="number"] {
+      margin-bottom: 1%;
+    }
+    
+    .ol-zoom {
+        top: 0.5em;
+        left: 0.5em;
+        width: 31px;
+    }  
+    
+    .ol-control.ol-layerswitcher {
+      width: 2em;
+    }
+    
+    /* canvas {
+      transform: inherit !important;
+    } */
+    
+    .form-go {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .btn1{
+      width: 45%;
+      margin-top: 12%;
+    }
+    
+    .btn{
+      width: 100%;
+      /* margin-top: 12%; */
+    }
+    }
+.fileContainer{
+    display: flex;
+    justify-content: space-evenly;
+  }
+.form-Input-file{
+  margin-top: 50px;
+}
+.layersSwetchers{
+  margin-top: 40px;
+  width: 40%;
+  margin-left: 15px;
+}
+.radio{
+  width: 20px;
+  margin-bottom: 30px;
+}
